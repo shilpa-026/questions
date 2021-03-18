@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+struct node
+{
+int data;
+node *left;
+node *right;
+};
+
+node *new_node(int data)
+{
+node *new_node = new node;
+new_node->data = data;
+new_node->left = NULL;
+new_node->right = NULL;
+return new_node;
+}
+node * tree_to_doubly_link_list(node * root){
+  node*temp=NULL;
+  if(root==NULL)
+  return root;
+  auto left=tree_to_doubly_link_list(root->left);
+  if(left==NULL){
+  	left=root;
+  }
+  else
+  {
+  	left->left->right=root;
+  	root->left=left->left;
+  }
+  auto right=tree_to_doubly_link_list(root->right);
+  if(right==NULL){
+  	temp=root;
+  	right=root;
+  }
+  else
+  { temp=right->left;
+  	root->right=right;
+  	right->left=root;
+  }
+  left->left=right;
+  temp->right=left;
+  return left;
+}
+int main()
+{
+node *root = new_node(4);
+root->left = new_node(2);
+root->right = new_node(6);
+root->left->left = new_node(1);
+root->left->right = new_node(3);
+root->right->left = new_node(5);
+root->right->right = new_node(7);
+node *list=NULL;
+node *head=NULL;
+head=tree_to_doubly_link_list(root);
+node * temp=head;
+while(temp->right!=head){
+cout<<temp->data;
+temp=temp->right;
+}
+cout<<temp->data;
+}
