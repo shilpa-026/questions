@@ -143,6 +143,7 @@ The `utils` folder contains the web drivers used to interact with the browser, a
 
 ### Libraries used in API Functional tests
 
+
 |Library |Link | Purpose/Use|
 |-|-|-|
 |RequestsLibrary|https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html|Below are the keywords used from this library <br> 1.Create Session <br> 2.GET On Session <br> 3.POST On Session <br> 4.PUT On Session  <br> 5.PATCH On Session <br> 6.DELETE On Session |
