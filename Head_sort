@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+void heap_sort(vector<int>&arr,int index){
+	int left=2*index+1;
+	int right=2*index+2;
+	int temp=index,temp1=0;
+	if(left<=arr.size() && arr[left]<arr[temp]){
+		//cout<<"inside";
+		temp=left;
+	}
+	if(right<=arr.size() && arr[right]<arr[temp]){
+		temp=right;
+	}
+	//cout<<left<<right<<arr[temp]<<arr[index]<<endl;
+	if(temp==index)
+	  return;
+	temp1=arr[temp];
+	arr[temp]=arr[index];
+	arr[index]=temp1;
+	heap_sort(arr,temp);
+}
+int main() {
+    vector<int>arr={5,1,6,2,3,10,123,12,3,4,56,556};
+    int temp=0;
+    int size=arr.size();
+    for(int j=0;j<size;j++){
+    	//cout<<arr.size()<<endl;
+    	for(int i=arr.size()/2;i>=0;i--)
+    	{
+    	   heap_sort(arr,i);
+    	}
+    	cout<<arr[0]<<" ";
+        auto it = arr.begin();
+    	arr.erase(it);	
+    }
+	return 0;
+}
